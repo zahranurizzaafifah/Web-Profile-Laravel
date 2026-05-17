@@ -11,7 +11,12 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        Profile::query()->create([
+        $user = \App\Models\User::factory()->create([
+            'name' => 'Zahra Nurizza Afifah',
+            'email' => 'zahra@example.com',
+        ]);
+
+        $user->profile()->create([
             'name' => 'Zahra Nurizza Afifah',
             'program' => 'Teknologi Multimedia Broadcasting – PENS',
             'class_name' => '2 Multimedia Broadcasting A',
@@ -20,13 +25,13 @@ class DatabaseSeeder extends Seeder
             'skills' => ['Adobe Photoshop', 'Adobe Premiere Pro', 'Canva', 'Microsoft Office', 'Fotografi & Videografi', 'Editing Multimedia', 'Dasar HTML & PHP'],
         ]);
 
-        Portfolio::query()->insert([
-            ['title' => 'Brand Visual Identity', 'category' => 'Design', 'description' => 'Perancangan identitas visual dan template media sosial untuk kebutuhan kampus.', 'created_at' => now(), 'updated_at' => now()],
-            ['title' => 'Cinematic Short Reel', 'category' => 'Video', 'description' => 'Editing short reel dengan pacing dinamis untuk promosi acara.', 'created_at' => now(), 'updated_at' => now()],
-            ['title' => 'Editorial Photo Series', 'category' => 'Photography', 'description' => 'Seri foto editorial dengan fokus pada komposisi dan tone warna.', 'created_at' => now(), 'updated_at' => now()],
+        $user->portfolios()->createMany([
+            ['title' => 'Brand Visual Identity', 'category' => 'Design', 'description' => 'Perancangan identitas visual dan template media sosial untuk kebutuhan kampus.'],
+            ['title' => 'Cinematic Short Reel', 'category' => 'Video', 'description' => 'Editing short reel dengan pacing dinamis untuk promosi acara.'],
+            ['title' => 'Editorial Photo Series', 'category' => 'Photography', 'description' => 'Seri foto editorial dengan fokus pada komposisi dan tone warna.'],
         ]);
 
-        Contact::query()->create([
+        $user->contact()->create([
             'email' => 'zahra@example.com',
             'phone' => '+62 812-3456-7890',
             'instagram' => '@zahranurizza',

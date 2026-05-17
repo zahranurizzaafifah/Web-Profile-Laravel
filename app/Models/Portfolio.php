@@ -9,5 +9,10 @@ class Portfolio extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'category', 'description', 'image_url', 'project_url'];
+    protected $fillable = ['user_id', 'title', 'category', 'description', 'image_url', 'project_url'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

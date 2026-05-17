@@ -1,7 +1,5 @@
 <?php
 
-
-
 return [
 
     /*
@@ -9,11 +7,9 @@ return [
     | Application Name
     |--------------------------------------------------------------------------
     |
-
     | This value is the name of your application, which will be used when the
     | framework needs to place the application's name in a notification or
     | other UI elements where an application name needs to be displayed.
-
     |
     */
 
@@ -52,15 +48,11 @@ return [
     |
     | This URL is used by the console to properly generate URLs when using
     | the Artisan command line tool. You should set this to the root of
-
     | the application so that it's available within Artisan commands.
-
     |
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-
-
 
     /*
     |--------------------------------------------------------------------------
@@ -68,10 +60,8 @@ return [
     |--------------------------------------------------------------------------
     |
     | Here you may specify the default timezone for your application, which
-
     | will be used by the PHP date and date-time functions. The timezone
     | is set to "UTC" by default as it is suitable for most use cases.
-
     |
     */
 
@@ -83,7 +73,6 @@ return [
     |--------------------------------------------------------------------------
     |
     | The application locale determines the default locale that will be used
-
     | by Laravel's translation / localization methods. This option can be
     | set to any locale for which you plan to have translation strings.
     |
@@ -95,13 +84,11 @@ return [
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
 
-
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
     |--------------------------------------------------------------------------
     |
-
     | This key is utilized by Laravel's encryption services and should be set
     | to a random, 32 character string to ensure that all encrypted values
     | are secure. You should do this prior to deploying the application.
@@ -118,7 +105,6 @@ return [
         ),
     ],
 
-
     /*
     |--------------------------------------------------------------------------
     | Maintenance Mode Driver
@@ -133,10 +119,8 @@ return [
     */
 
     'maintenance' => [
-
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
-
 
 ];

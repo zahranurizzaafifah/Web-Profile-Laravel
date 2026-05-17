@@ -11,8 +11,8 @@ Route::get('/portfolio', [ProfileController::class, 'portfolio'])->name('portfol
 Route::get('/contact', [ProfileController::class, 'contact'])->name('contact');
 
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', fn () => redirect()->route('admin.portfolios.index'))->name('dashboard');
-    Route::resource('portfolios', AdminPortfolioController::class)->except(['show']);
-    Route::get('contact', [AdminContactController::class, 'edit'])->name('contact.edit');
-    Route::put('contact', [AdminContactController::class, 'update'])->name('contact.update');
+	Route::get('/', fn () => redirect()->route('admin.portfolios.index'))->name('dashboard');
+	Route::resource('portfolios', AdminPortfolioController::class)->except(['show']);
+	Route::get('contact', [AdminContactController::class, 'edit'])->name('contact.edit');
+	Route::put('contact', [AdminContactController::class, 'update'])->name('contact.update');
 });

@@ -9,7 +9,6 @@ return [
     | Default Cache Store
     |--------------------------------------------------------------------------
     |
-
     | This option controls the default cache store that will be used by the
     | framework. This connection is utilized if another isn't explicitly
     | specified when running a cache operation inside the application.
@@ -17,7 +16,6 @@ return [
     */
 
     'default' => env('CACHE_STORE', 'database'),
-
 
     /*
     |--------------------------------------------------------------------------
@@ -28,17 +26,13 @@ return [
     | well as their drivers. You may even define multiple stores for the
     | same cache driver to group types of items stored in your caches.
     |
-
     | Supported drivers: "array", "database", "file", "memcached",
     |                    "redis", "dynamodb", "octane",
     |                    "failover", "null"
-
     |
     */
 
     'stores' => [
-
-
 
         'array' => [
             'driver' => 'array',
@@ -47,12 +41,10 @@ return [
 
         'database' => [
             'driver' => 'database',
-
             'connection' => env('DB_CACHE_CONNECTION'),
             'table' => env('DB_CACHE_TABLE', 'cache'),
             'lock_connection' => env('DB_CACHE_LOCK_CONNECTION'),
             'lock_table' => env('DB_CACHE_LOCK_TABLE'),
-
         ],
 
         'file' => [
@@ -82,10 +74,8 @@ return [
 
         'redis' => [
             'driver' => 'redis',
-
             'connection' => env('REDIS_CACHE_CONNECTION', 'cache'),
             'lock_connection' => env('REDIS_CACHE_LOCK_CONNECTION', 'default'),
-
         ],
 
         'dynamodb' => [
@@ -101,7 +91,6 @@ return [
             'driver' => 'octane',
         ],
 
-
         'failover' => [
             'driver' => 'failover',
             'stores' => [
@@ -110,7 +99,6 @@ return [
             ],
         ],
 
-
     ],
 
     /*
@@ -118,14 +106,11 @@ return [
     | Cache Key Prefix
     |--------------------------------------------------------------------------
     |
-
     | When utilizing the APC, database, memcached, Redis, and DynamoDB cache
     | stores, there might be other applications using the same cache. For
-
     | that reason, you may prefix every cache key to avoid collisions.
     |
     */
-
 
     'prefix' => env('CACHE_PREFIX', Str::slug((string) env('APP_NAME', 'laravel')).'-cache-'),
 
@@ -141,6 +126,5 @@ return [
     */
 
     'serializable_classes' => false,
-
 
 ];

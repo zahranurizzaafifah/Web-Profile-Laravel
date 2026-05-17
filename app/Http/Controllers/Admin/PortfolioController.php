@@ -6,11 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePortfolioRequest;
 use App\Http\Requests\UpdatePortfolioRequest;
 use App\Models\Portfolio;
+use App\Services\PortfolioService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class PortfolioController extends Controller
 {
+    public function __construct(
+        private PortfolioService $portfolioService
+    ) {}
+
     public function index(): View
     {
         $portfolios = Portfolio::query()->latest()->get();
@@ -25,14 +30,7 @@ class PortfolioController extends Controller
 
     public function store(StorePortfolioRequest $request): RedirectResponse
     {
-        $data = $request->validated();
-        
-        $user = \App\Models\User::query()->first();
-        if ($user) {
-            $data['user_id'] = $user->id;
-        }
-
-        Portfolio::query()->create($data);
+        $this->portfolioService->createPortfolio($request->validated());
 
         return redirect()->route('admin.portfolios.index')->with('success', 'Portfolio berhasil ditambahkan.');
     }
@@ -44,16 +42,14 @@ class PortfolioController extends Controller
 
     public function update(UpdatePortfolioRequest $request, Portfolio $portfolio): RedirectResponse
     {
-        $data = $request->validated();
-
-        $portfolio->update($data);
+        $this->portfolioService->updatePortfolio($portfolio, $request->validated());
 
         return redirect()->route('admin.portfolios.index')->with('success', 'Portfolio berhasil diperbarui.');
     }
 
     public function destroy(Portfolio $portfolio): RedirectResponse
     {
-        $portfolio->delete();
+        $this->portfolioService->deletePortfolio($portfolio);
 
         return redirect()->route('admin.portfolios.index')->with('success', 'Portfolio berhasil dihapus.');
     }

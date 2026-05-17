@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePortfolioRequest;
+use App\Http\Requests\UpdatePortfolioRequest;
 use App\Models\Portfolio;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class PortfolioController extends Controller
@@ -22,15 +23,14 @@ class PortfolioController extends Controller
         return view('admin.portfolios.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StorePortfolioRequest $request): RedirectResponse
     {
-        $data = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'category' => ['nullable', 'string', 'max:255'],
-            'description' => ['nullable', 'string'],
-            'image_url' => ['nullable', 'string', 'max:255'],
-            'project_url' => ['nullable', 'string', 'max:255'],
-        ]);
+        $data = $request->validated();
+        
+        $user = \App\Models\User::query()->first();
+        if ($user) {
+            $data['user_id'] = $user->id;
+        }
 
         Portfolio::query()->create($data);
 
@@ -42,15 +42,9 @@ class PortfolioController extends Controller
         return view('admin.portfolios.edit', compact('portfolio'));
     }
 
-    public function update(Request $request, Portfolio $portfolio): RedirectResponse
+    public function update(UpdatePortfolioRequest $request, Portfolio $portfolio): RedirectResponse
     {
-        $data = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'category' => ['nullable', 'string', 'max:255'],
-            'description' => ['nullable', 'string'],
-            'image_url' => ['nullable', 'string', 'max:255'],
-            'project_url' => ['nullable', 'string', 'max:255'],
-        ]);
+        $data = $request->validated();
 
         $portfolio->update($data);
 

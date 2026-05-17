@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateContactRequest;
 use App\Models\Contact;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ContactController extends Controller
@@ -17,21 +17,19 @@ class ContactController extends Controller
         return view('admin.contact.edit', compact('contact'));
     }
 
-    public function update(Request $request): RedirectResponse
+    public function update(UpdateContactRequest $request): RedirectResponse
     {
-        $data = $request->validate([
-            'email' => ['nullable', 'string', 'max:255'],
-            'phone' => ['nullable', 'string', 'max:255'],
-            'instagram' => ['nullable', 'string', 'max:255'],
-            'github' => ['nullable', 'string', 'max:255'],
-            'location' => ['nullable', 'string', 'max:255'],
-        ]);
+        $data = $request->validated();
 
         $contact = Contact::query()->latest()->first();
 
         if ($contact) {
             $contact->update($data);
         } else {
+            $user = \App\Models\User::query()->first();
+            if ($user) {
+                $data['user_id'] = $user->id;
+            }
             Contact::query()->create($data);
         }
 

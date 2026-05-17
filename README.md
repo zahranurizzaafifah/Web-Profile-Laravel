@@ -2,7 +2,7 @@
 
 ## Identitas Mahasiswa
 - **Nama:** Zahra Nurizza Afifah
-- **NIM:** 5124500004
+- **NRP:** 5124500004
 - **Kelas:** MMB-A
 
 ## Deskripsi

@@ -20,9 +20,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'Zahra Nurizza Afifah',
             'program' => 'Teknologi Multimedia Broadcasting – PENS',
             'class_name' => '2 Multimedia Broadcasting A',
-            'bio' => 'Mahasiswa Teknologi Multimedia Broadcasting di Politeknik Elektronika Negeri Surabaya (PENS) yang memiliki minat pada multimedia kreatif, desain grafis, fotografi, videografi, dan editing. Memiliki pengalaman dalam pembuatan konten multimedia, desain visual, serta pengoperasian kamera dan software editing melalui pengalaman magang dan proyek perkuliahan. Mampu bekerja sama dalam tim, memiliki kreativitas tinggi, serta antusias untuk terus mengembangkan kemampuan di bidang industri kreatif dan multimedia.',
-            'hobbies' => ['Membaca', 'Desain grafis', 'Fotografi dan videografi', 'Editing foto & video', 'Proyek multimedia kreatif'],
-            'skills' => ['Adobe Photoshop', 'Adobe Premiere Pro', 'Canva', 'Microsoft Office', 'Fotografi & Videografi', 'Editing Multimedia', 'Dasar HTML & PHP'],
+            'bio' => 'Saya adalah Mahasiswa Teknologi Multimedia Broadcasting yang memiliki minat besar di bidang desain grafis, fotografi, dan produksi media digital. Terbiasa menggunakan berbagai software desain untuk membuat konten visual yang kreatif dan komunikatif.',
+            'hobbies' => ['Desain Grafis', 'Fotografi', 'Videografi', 'Editing'],
+            'skills' => ['Desain Grafis & Produksi', 'Editing Video & Foto', 'Fotografi', 'Public Speaking', 'Microsoft 365', 'Kerja Tim & Komunikasi Efektif'],
         ]);
 
         $user->portfolios()->createMany([

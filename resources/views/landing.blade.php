@@ -17,7 +17,7 @@
             <div class="model-card">
                 <span class="label">Karakter 3D AI</span>
                 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-                <model-viewer src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" alt="3D character" camera-controls auto-rotate shadow-intensity="1" style="width:100%;height:100%;min-height:460px;background:transparent;"></model-viewer>
+                <model-viewer src="{{ asset('models/karakter_zahra.glb') }}" alt="3D character" camera-controls auto-rotate shadow-intensity="1" style="width:100%;height:100%;min-height:460px;background:transparent;"></model-viewer>
             </div>
         </div>
     </section>

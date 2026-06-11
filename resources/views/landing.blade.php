@@ -178,6 +178,28 @@
     </div>
 </section>
 
+<!-- FEATURE PROFILE -->
+<section style="position:relative;min-height:520px;background:#7c3aed;overflow:hidden;display:flex;align-items:center;">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 24% 22%,rgba(255,255,255,.20),transparent 30%),linear-gradient(100deg,rgba(91,33,182,.98) 0%,rgba(124,58,237,.94) 42%,rgba(167,139,250,.72) 100%);z-index:1;"></div>
+    <div style="position:absolute;top:0;right:0;bottom:0;width:min(48vw,620px);z-index:0;background:url('{{ asset('images/zahra-home-feature.png') }}') no-repeat center top / cover;filter:grayscale(15%) saturate(1.05);opacity:.68;"></div>
+    <div style="position:absolute;right:24%;top:16%;width:280px;height:280px;border-radius:999px;background:rgba(255,255,255,.16);filter:blur(48px);z-index:1;"></div>
+    <div style="position:absolute;right:4%;bottom:8%;width:320px;height:320px;border-radius:999px;background:rgba(237,233,254,.24);filter:blur(58px);z-index:1;"></div>
+
+    <div class="wrap" style="position:relative;z-index:2;width:100%;">
+        <div style="max-width:620px;text-align:center;padding:80px 0;">
+            <div style="font-size:clamp(3.2rem,8vw,6.2rem);line-height:1.32;font-weight:900;letter-spacing:.16em;color:#fff;text-transform:uppercase;font-family:'Plus Jakarta Sans','Inter',sans-serif;">
+                <div>I'M</div>
+                <div>ZAHRA</div>
+                <div>NURIZZA</div>
+                <div>AFIFAH<span style="color:#22c55e;">.</span></div>
+            </div>
+            <div style="margin-top:34px;color:rgba(255,255,255,.9);font-size:clamp(.95rem,1.7vw,1.25rem);letter-spacing:.32em;text-transform:uppercase;font-weight:500;">
+                Multimedia & Design
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- 3D CHARACTER SECTION -->
 <section class="section section-alt">
     <div class="wrap">

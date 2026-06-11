@@ -25,9 +25,7 @@
                     <img src="{{ $profile->photo_url }}" alt="{{ $profile->name }}"
                          style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid #ede9fe;box-shadow:0 4px 20px rgba(124,58,237,.25);margin:0 auto 20px;display:block;">
                 @else
-                    <div style="width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg,#7c3aed,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 20px;box-shadow:0 8px 24px rgba(124,58,237,.3);">
-                        👩‍🎨
-                    </div>
+                    <div style="width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg,#7c3aed,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 20px;box-shadow:0 8px 24px rgba(124,58,237,.3);">ZA</div>
                 @endif
                 <h2 style="font-size:1.1rem;font-weight:800;margin-bottom:4px;">{{ $profile->name }}</h2>
                 <p style="font-size:13px;color:#7c3aed;font-weight:600;margin-bottom:16px;">Creative Designer & Multimedia</p>
@@ -54,12 +52,10 @@
 
             @if(!empty($profile->hobbies))
             <div class="card" style="margin-top:16px;">
-                <div class="card-title">🎯 Hobi & Minat</div>
+                <div class="card-title">Hobi & Minat</div>
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-                    @php $hobbyIcons = ['🎨','📷','🎬','✂️','🖌️','🎵','📝','🎮']; @endphp
                     @foreach($profile->hobbies as $i => $h)
                     <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;">
-                        <span style="font-size:16px;">{{ $hobbyIcons[$i % count($hobbyIcons)] }}</span>
                         <span style="font-size:12px;font-weight:600;">{{ $h }}</span>
                     </div>
                     @endforeach
@@ -73,7 +69,7 @@
             <!-- Bio -->
             @if($profile->bio)
             <div class="card" style="margin-bottom:24px;">
-                <div class="card-title">👋 Bio Singkat</div>
+                <div class="card-title">Bio Singkat</div>
                 <p style="color:#475569;line-height:1.85;font-size:15px;">{{ $profile->bio }}</p>
             </div>
             @endif
@@ -81,7 +77,7 @@
             <!-- Skills -->
             @if(!empty($profile->skills))
             <div class="card" style="margin-bottom:24px;">
-                <div class="card-title">⚡ Kemampuan & Skill</div>
+                <div class="card-title">Kemampuan & Skill</div>
                 @php
                     $skillPcts = [90, 85, 80, 85, 85, 75, 80, 70];
                 @endphp
@@ -102,7 +98,7 @@
             <!-- Pendidikan -->
             @if(!empty($profile->education))
             <div class="card" style="margin-bottom:24px;">
-                <div class="card-title">🎓 Pendidikan</div>
+                <div class="card-title">Pendidikan</div>
                 <div class="timeline">
                     @foreach($profile->education as $i => $edu)
                     <div class="tl-item">
@@ -120,7 +116,7 @@
             <!-- Pengalaman -->
             @if(!empty($profile->experience))
             <div class="card" style="margin-bottom:24px;">
-                <div class="card-title">💼 Pengalaman Kerja</div>
+                <div class="card-title">Pengalaman Kerja</div>
                 <div class="timeline">
                     @foreach($profile->experience as $i => $exp)
                     <div class="tl-item">
@@ -138,11 +134,10 @@
             <!-- Organisasi -->
             @if(!empty($profile->organizations))
             <div class="card">
-                <div class="card-title">🏆 Organisasi & Kegiatan</div>
+                <div class="card-title">Organisasi & Kegiatan</div>
                 <div style="display:flex;flex-direction:column;gap:12px;">
                     @foreach($profile->organizations as $org)
                     <div style="display:flex;gap:14px;padding:14px;background:#f8fafc;border-radius:12px;border:1px solid #e2e8f0;">
-                        <span style="font-size:22px;flex-shrink:0;margin-top:2px;">{{ $org['icon'] ?? '🏆' }}</span>
                         <div>
                             <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
                                 <span style="font-size:14px;font-weight:700;">{{ $org['title'] }}</span>

@@ -44,11 +44,11 @@
                     <td>
                         <div class="actions-row">
                             <a href="{{ route('admin.portfolios.edit', $portfolio) }}" class="topbar-btn btn-outline" style="padding:7px 16px;font-size:13px;">
-                                ✏️ Edit
+                                 Edit
                             </a>
                             <form action="{{ route('admin.portfolios.destroy', $portfolio) }}" method="POST" onsubmit="return confirm('Yakin hapus portfolio ini?')">
                                 @csrf @method('DELETE')
-                                <button class="topbar-btn btn-danger" type="submit" style="padding:7px 16px;font-size:13px;">🗑️ Hapus</button>
+                                <button class="topbar-btn btn-danger" type="submit" style="padding:7px 16px;font-size:13px;">- Hapus</button>
                             </form>
                         </div>
                     </td>
@@ -56,7 +56,7 @@
                 @empty
                 <tr>
                     <td colspan="5" style="text-align:center;padding:48px 20px;">
-                        <div style="font-size:40px;margin-bottom:12px;">🖼️</div>
+                        <div style="font-size:40px;margin-bottom:12px;">-</div>
                         <div style="font-weight:700;font-size:15px;margin-bottom:6px;">Belum ada portfolio</div>
                         <div style="color:#94a3b8;font-size:13px;margin-bottom:16px;">Mulai tambahkan karya pertamamu</div>
                         <a href="{{ route('admin.portfolios.create') }}" class="topbar-btn btn-primary">+ Tambah Portfolio</a>

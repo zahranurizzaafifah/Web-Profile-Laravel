@@ -33,7 +33,7 @@
         a { color: inherit; text-decoration: none; }
         img { max-width: 100%; height: auto; display: block; }
 
-        /* ── NAV ── */
+        /*  NAV  */
         .nav {
             position: sticky; top: 0; z-index: 100;
             background: rgba(255,255,255,.88);
@@ -72,10 +72,10 @@
         }
         .nav-cta:hover { background: var(--primary-dark); box-shadow: 0 4px 14px rgba(124,58,237,.35); color: #fff; }
 
-        /* ── WRAP ── */
+        /*  WRAP  */
         .wrap { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
 
-        /* ── HERO ── */
+        /*  HERO  */
         .hero {
             padding: 80px 0 60px;
             background: linear-gradient(135deg, #faf5ff 0%, #f0f9ff 50%, #fff7ed 100%);
@@ -176,7 +176,7 @@
         @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
         .hero-float-badge .dot { width: 10px; height: 10px; border-radius: 50%; background: #10b981; }
 
-        /* ── SECTION ── */
+        /*  SECTION  */
         .section { padding: 72px 0; }
         .section-alt { background: var(--bg2); }
         .section-label {
@@ -189,11 +189,11 @@
         .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -.02em; margin-bottom: 12px; }
         .section-lead { color: var(--muted); font-size: 1rem; max-width: 54ch; }
 
-        /* ── GRID ── */
+        /*  GRID  */
         .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 
-        /* ── CARD ── */
+        /*  CARD  */
         .card {
             background: var(--surface); border: 1px solid var(--border);
             border-radius: var(--radius); padding: 26px;
@@ -206,7 +206,7 @@
             margin-bottom: 16px; font-size: 20px;
         }
 
-        /* ── PORTFOLIO THUMB ── */
+        /*  PORTFOLIO THUMB  */
         .port-thumb {
             height: 180px; border-radius: 12px; margin-bottom: 16px; overflow: hidden;
             background: linear-gradient(135deg, rgba(124,58,237,.35), rgba(167,139,250,.25)),
@@ -217,14 +217,14 @@
         .port-thumb.alt2 { background: linear-gradient(135deg, rgba(245,158,11,.3), rgba(6,182,212,.25)),
             url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80') center/cover; }
 
-        /* ── SKILL BAR ── */
+        /*  SKILL BAR  */
         .skill-item { margin-bottom: 18px; }
         .skill-top { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; font-weight: 600; }
         .skill-pct { font-size: 13px; color: var(--primary); font-weight: 700; }
         .skill-bar { height: 8px; background: var(--border); border-radius: 999px; overflow: hidden; }
         .skill-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--primary), #a78bfa); transition: width 1s ease; }
 
-        /* ── TIMELINE ── */
+        /*  TIMELINE  */
         .timeline { position: relative; padding-left: 28px; }
         .timeline::before { content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px; background: var(--border); }
         .tl-item { position: relative; padding-bottom: 28px; }
@@ -235,7 +235,7 @@
         .tl-org { font-size: 13px; color: var(--primary); font-weight: 600; }
         .tl-desc { font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.6; }
 
-        /* ── CONTACT ── */
+        /*  CONTACT  */
         .contact-grid { display: grid; grid-template-columns: 1fr 360px; gap: 32px; align-items: start; }
         .contact-item { display: flex; align-items: center; gap: 16px; padding: 18px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--surface); margin-bottom: 12px; transition: 200ms; }
         .contact-item:hover { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(124,58,237,.08); }
@@ -243,11 +243,11 @@
         .contact-label { font-size: 12px; color: var(--muted); margin-bottom: 2px; }
         .contact-val { font-size: 14px; font-weight: 600; }
 
-        /* ── FOOTER ── */
+        /*  FOOTER  */
         footer { background: var(--text); color: rgba(255,255,255,.6); text-align: center; padding: 28px; font-size: 13px; }
         footer span { color: var(--primary); font-weight: 700; }
 
-        /* ── MODEL VIEWER ── */
+        /*  MODEL VIEWER  */
         model-viewer { width: 100%; height: 100%; min-height: 460px; background: transparent; }
 
         /* Responsive */
@@ -271,7 +271,7 @@
 <nav class="nav">
     <div class="nav-inner">
         <a class="nav-brand" href="{{ route('landing') }}">
-            <div class="nav-brand-dot">✦</div>
+            <div class="nav-brand-dot">Z</div>
             <span>Zahra Profile</span>
         </a>
         <div class="nav-links">
@@ -280,14 +280,14 @@
             <a href="{{ route('portfolio') }}" class="{{ request()->routeIs('portfolio') ? 'active' : '' }}">Portfolio</a>
             <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Kontak</a>
         </div>
-        <a href="{{ route('login') }}" class="nav-cta">Admin ↗</a>
+        <a href="{{ route('login') }}" class="nav-cta">Admin -</a>
     </div>
 </nav>
 
 <main>@yield('content')</main>
 
 <footer>
-    <p>© 2026 <span>Zahra Nurizza Afifah</span> · Teknologi Multimedia Broadcasting · PENS</p>
+    <p> 2026 <span>Zahra Nurizza Afifah</span>  Teknologi Multimedia Broadcasting  PENS</p>
 </footer>
 
 <!-- AI CHAT WIDGET -->
@@ -450,7 +450,7 @@
 <div class="ai-chat-window" id="ai-chat-window">
     <div class="ai-chat-header">
         <span>Tanya AI Asisten</span>
-        <button class="ai-chat-close" onclick="toggleChat()">✕</button>
+        <button class="ai-chat-close" onclick="toggleChat()">x</button>
     </div>
     <div class="ai-chat-body" id="ai-chat-body">
         <div class="chat-bubble chat-bot">Halo! Saya asisten virtual Zahra. Ada yang ingin ditanyakan tentang profil, pengalaman, atau karya Zahra?</div>
@@ -460,7 +460,7 @@
     </div>
     <form class="ai-chat-input-area" id="ai-chat-form" onsubmit="sendChatMessage(event)">
         <input type="text" id="ai-chat-input" class="ai-chat-input" placeholder="Tulis pertanyaan..." required autocomplete="off">
-        <button type="submit" id="ai-chat-send" class="ai-chat-send">➤</button>
+        <button type="submit" id="ai-chat-send" class="ai-chat-send">Send</button>
     </form>
 </div>
 

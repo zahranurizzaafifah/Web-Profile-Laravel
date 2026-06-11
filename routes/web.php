@@ -13,6 +13,7 @@ Route::get('/', [ProfileController::class, 'landing'])->name('landing');
 Route::get('/about', [ProfileController::class, 'about'])->name('about');
 Route::get('/portfolio', [ProfileController::class, 'portfolio'])->name('portfolio');
 Route::get('/contact', [ProfileController::class, 'contact'])->name('contact');
+Route::post('/contact', [ProfileController::class, 'sendContactEmail'])->name('contact.send');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login'])->middleware('guest');

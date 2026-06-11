@@ -6,9 +6,6 @@
 
 <!-- HERO -->
 <section class="hero">
-    @if(optional($profile)->photo_url)
-        <div style="position:absolute; top:0; right:0; bottom:0; width:65%; z-index:0; pointer-events:none; opacity:0.40; background: url('{{ $profile->photo_url }}') no-repeat right 30% / cover; -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 20%, transparent 100%); mask-image: linear-gradient(to left, rgba(0,0,0,1) 20%, transparent 100%); mix-blend-mode: multiply;"></div>
-    @endif
     <div class="hero-inner">
         <div>
             <div class="hero-badge">
@@ -25,49 +22,32 @@
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
                     Lihat Portfolio
                 </a>
-                <a class="btn btn-outline" href="{{ route('contact') }}">Hubungi Saya →</a>
+                <a class="btn btn-outline" href="{{ route('contact') }}">Hubungi Saya -></a>
             </div>
 
-            <!-- Info chips -->
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:32px; margin-bottom:32px;">
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:32px;">
                 <div style="display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:#fff;border:1px solid #e2e8f0;font-size:13px;font-weight:600;color:#64748b;box-shadow:0 2px 8px rgba(0,0,0,.06);">
-                    🎓 {{ optional($profile)->program ?? 'Multimedia Broadcasting' }}
+                    Program: {{ optional($profile)->program ?? 'Multimedia Broadcasting' }}
                 </div>
                 <div style="display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:#fff;border:1px solid #e2e8f0;font-size:13px;font-weight:600;color:#64748b;box-shadow:0 2px 8px rgba(0,0,0,.06);">
-                    📍 Surabaya, Indonesia
-                </div>
-            </div>
-
-            <!-- Stats -->
-            <div style="display:flex; gap:36px; align-items:center; border-top:1px solid var(--border); padding-top:24px;">
-                <div class="hero-stat" style="text-align:left;">
-                    <div class="hero-stat-num">{{ $portfolios->count() ?? 3 }}+</div>
-                    <div class="hero-stat-label">Portfolio</div>
-                </div>
-                <div class="hero-stat" style="text-align:left;">
-                    <div class="hero-stat-num">2+</div>
-                    <div class="hero-stat-label">Tahun Exp</div>
-                </div>
-                <div class="hero-stat" style="text-align:left;">
-                    <div class="hero-stat-num">6+</div>
-                    <div class="hero-stat-label">Skills</div>
+                    Lokasi: Surabaya, Indonesia
                 </div>
             </div>
         </div>
 
-        <!-- Profile Visual -->
         <div class="hero-visual">
-            @if(!optional($profile)->photo_url)
-            <div style="position:relative; display:flex; justify-content:flex-end;">
-                <div class="hero-float-badge" style="z-index: 10;">
+            <div style="position:relative;">
+                <div class="hero-float-badge">
                     <div class="dot"></div>
                     <span>Open to Work</span>
                 </div>
-                
-                <!-- Simplified Fallback Card -->
-                <div class="hero-card" style="max-width:380px;">
-                    <div class="hero-card-header" style="min-height:240px;">
-                        <div class="hero-card-avatar">✨</div>
+                <div class="hero-card">
+                    <div class="hero-card-header">
+                        @if(optional($profile)->photo_url)
+                            <img src="{{ $profile->photo_url }}" alt="{{ optional($profile)->name ?? 'Zahra Nurizza Afifah' }}" style="width:64px;height:64px;border-radius:16px;object-fit:cover;margin-bottom:16px;border:2px solid rgba(255,255,255,.3);">
+                        @else
+                            <div class="hero-card-avatar">ZA</div>
+                        @endif
                         <div class="hero-card-name">{{ optional($profile)->name ?? 'Zahra Nurizza Afifah' }}</div>
                         <div class="hero-card-role">Creative Designer & Multimedia</div>
                     </div>
@@ -77,14 +57,26 @@
                                 <span class="tag-chip">{{ $skill }}</span>
                             @endforeach
                         </div>
+                        <div class="hero-stat-row">
+                            <div class="hero-stat">
+                                <div class="hero-stat-num">{{ $portfolios->count() ?? 3 }}+</div>
+                                <div class="hero-stat-label">Portfolio</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-num">2+</div>
+                                <div class="hero-stat-label">Tahun Exp</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-num">6+</div>
+                                <div class="hero-stat-label">Skills</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            @endif
         </div>
     </div>
 </section>
-
 <!-- SKILLS SECTION -->
 <section class="section section-alt">
     <div class="wrap">
@@ -130,9 +122,6 @@
                     @endphp
                     @foreach($hobbies as $h)
                     <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.05);">
-                        <span style="font-size:20px;">
-                            @if($loop->index==0)🎨@elseif($loop->index==1)📷@elseif($loop->index==2)🎬@else✂️@endif
-                        </span>
                         <span style="font-size:14px;font-weight:600;">{{ $h }}</span>
                     </div>
                     @endforeach
@@ -150,7 +139,7 @@
                 <div class="section-label">Karya</div>
                 <h2 class="section-title" style="margin-bottom:0;">Portfolio Pilihan</h2>
             </div>
-            <a href="{{ route('portfolio') }}" class="btn btn-outline" style="padding:10px 22px;font-size:13px;">Lihat Semua →</a>
+            <a href="{{ route('portfolio') }}" class="btn btn-outline" style="padding:10px 22px;font-size:13px;">Lihat Semua -></a>
         </div>
 
         <div class="grid-3">
@@ -198,9 +187,9 @@
                 <h2 class="section-title">Karakter 3D Zahra</h2>
                 <p style="color:#64748b;line-height:1.8;margin-bottom:24px;">Model 3D interaktif yang menggambarkan karakter personal. Putar dan eksplorasi karakter ini menggunakan mouse!</p>
                 <div style="display:flex;flex-direction:column;gap:12px;">
-                    <div style="display:flex;align-items:center;gap:12px;"><span style="font-size:18px;">🖱️</span><span style="font-size:14px;color:#64748b;">Drag untuk memutar karakter</span></div>
-                    <div style="display:flex;align-items:center;gap:12px;"><span style="font-size:18px;">🔍</span><span style="font-size:14px;color:#64748b;">Scroll untuk zoom in/out</span></div>
-                    <div style="display:flex;align-items:center;gap:12px;"><span style="font-size:18px;">✨</span><span style="font-size:14px;color:#64748b;">Auto-rotate aktif secara default</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;"><strong style="font-size:13px;color:#7c3aed;">Drag</strong><span style="font-size:14px;color:#64748b;">untuk memutar karakter</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;"><strong style="font-size:13px;color:#7c3aed;">Scroll</strong><span style="font-size:14px;color:#64748b;">untuk zoom in/out</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;"><strong style="font-size:13px;color:#7c3aed;">Auto</strong><span style="font-size:14px;color:#64748b;">rotate aktif secara default</span></div>
                 </div>
             </div>
             <div style="background:#fff;border-radius:24px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 20px 60px rgba(0,0,0,.1);">

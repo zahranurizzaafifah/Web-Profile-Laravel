@@ -6,7 +6,7 @@
 @section('page-sub', $isEdit ? 'Perbarui informasi karya ini' : 'Unggah karya atau proyek baru')
 
 @section('topbar-actions')
-    <a href="{{ route('admin.portfolios.index') }}" class="topbar-btn btn-outline">← Kembali</a>
+    <a href="{{ route('admin.portfolios.index') }}" class="topbar-btn btn-outline"><- Kembali</a>
 @endsection
 
 @section('content')
@@ -28,7 +28,7 @@
 
         {{-- INFO KARYA --}}
         <div class="card" style="margin-bottom:20px;">
-            <div class="card-title">📝 Informasi Karya</div>
+            <div class="card-title"> Informasi Karya</div>
             <div style="display:flex;flex-direction:column;gap:18px;">
                 <div class="form-group">
                     <label class="form-label">Judul Karya <span style="color:#ef4444">*</span></label>
@@ -57,7 +57,7 @@
 
         {{-- UPLOAD GAMBAR --}}
         <div class="card" style="margin-bottom:20px;">
-            <div class="card-title">🖼️ Gambar Portfolio</div>
+            <div class="card-title">- Gambar Portfolio</div>
             <p style="font-size:13px;color:#64748b;margin-bottom:16px;">Upload gambar langsung <strong>atau</strong> masukkan URL gambar dari internet.</p>
 
             {{-- Preview area --}}
@@ -67,7 +67,7 @@
                     alt="Preview"
                     style="width:100%;max-height:260px;object-fit:cover;border-radius:12px;border:1px solid #e2e8f0;display:block;">
                 <button type="button" onclick="clearImage()" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border:1px solid #fecaca;background:#fef2f2;border-radius:8px;color:#ef4444;font-size:13px;font-weight:600;cursor:pointer;">
-                    🗑️ Hapus Gambar
+                    - Hapus Gambar
                 </button>
             </div>
 
@@ -78,9 +78,9 @@
                 ondragleave="this.style.borderColor='#e2e8f0';this.style.background='#fafbfc';"
                 ondrop="handleDrop(event)"
                 style="border:2px dashed #e2e8f0;border-radius:12px;background:#fafbfc;padding:36px 24px;text-align:center;cursor:pointer;transition:200ms;">
-                <div style="font-size:32px;margin-bottom:10px;">📁</div>
+                <div style="font-size:32px;margin-bottom:10px;"></div>
                 <div style="font-size:14px;font-weight:700;color:#374151;margin-bottom:4px;">Klik atau drag & drop gambar di sini</div>
-                <div style="font-size:12px;color:#94a3b8;">JPG, PNG, WEBP, GIF · Maks 2MB</div>
+                <div style="font-size:12px;color:#94a3b8;">JPG, PNG, WEBP, GIF  Maks 4MB</div>
             </div>
             <input type="file" id="image-input" name="image" accept="image/*" style="display:none;" onchange="previewImage(event)">
 
@@ -103,7 +103,7 @@
 
         {{-- PROJECT LINK --}}
         <div class="card" style="margin-bottom:24px;">
-            <div class="card-title">🔗 Link Project (Opsional)</div>
+            <div class="card-title">- Link Project (Opsional)</div>
             <div class="form-group">
                 <label class="form-label">URL Project / Demo</label>
                 <input class="form-input" name="project_url" type="url"
@@ -115,7 +115,7 @@
 
         <div style="display:flex;gap:12px;">
             <button type="submit" class="topbar-btn btn-primary" style="padding:12px 28px;font-size:14px;">
-                {{ $isEdit ? '💾 Simpan Perubahan' : '✨ Tambah Portfolio' }}
+                {{ $isEdit ? ' Simpan Perubahan' : ' Tambah Portfolio' }}
             </button>
             <a href="{{ route('admin.portfolios.index') }}" class="topbar-btn btn-outline" style="padding:12px 22px;font-size:14px;">Batal</a>
         </div>
@@ -126,28 +126,9 @@
 function previewImage(event) {
     const file = event.target.files[0];
     if (!file) return;
-    if (file.size > 2 * 1024 * 1024) {
-        alert("Ukuran gambar terlalu besar! Maksimal 2MB.");
+    if (file.size > 4 * 1024 * 1024) {
+        alert("Ukuran gambar terlalu besar! Maksimal 4MB.");
         event.target.value = '';
-        return;
-    }
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        showPreview(e.target.result);
-        // Clear URL input when file uploaded
-        document.getElementById('image-url-input').value = '';
-    };
-    reader.readAsDataURL(file);
-}
-
-function handleDrop(event) {
-    event.preventDefault();
-    document.getElementById('drop-zone').style.borderColor = '#e2e8f0';
-    document.getElementById('drop-zone').style.background = '#fafbfc';
-    const file = event.dataTransfer.files[0];
-    if (!file || !file.type.startsWith('image/')) return;
-    if (file.size > 2 * 1024 * 1024) {
-        alert("Ukuran gambar terlalu besar! Maksimal 2MB.");
         return;
     }
     const dt = new DataTransfer();

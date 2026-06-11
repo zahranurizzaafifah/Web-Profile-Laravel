@@ -52,7 +52,7 @@
             <div style="padding:20px;">
                 <h3 style="font-size:1rem;font-weight:800;margin-bottom:8px;letter-spacing:-.01em;">{{ $portfolio->title }}</h3>
                 <p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:14px;">{{ Str::limit($portfolio->description, 90) }}</p>
-                <span style="font-size:12px;font-weight:700;color:#7c3aed;">Lihat Detail →</span>
+                <span style="font-size:12px;font-weight:700;color:#7c3aed;">Lihat Detail -></span>
             </div>
         </article>
         @empty
@@ -82,7 +82,7 @@
             <img id="modal-img" src="" alt="" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div style="padding:28px 28px 24px;">
-            <button onclick="closeModal()" style="position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:999px;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.9);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;z-index:2;">✕</button>
+            <button onclick="closeModal()" style="position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:999px;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.9);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;z-index:2;">x</button>
             <div id="modal-cat" style="display:inline-flex;padding:4px 12px;border-radius:999px;background:#ede9fe;color:#7c3aed;font-size:12px;font-weight:700;margin-bottom:12px;"></div>
             <h2 id="modal-title" style="font-size:1.25rem;font-weight:800;margin-bottom:10px;letter-spacing:-.02em;"></h2>
             <p id="modal-desc" style="color:#64748b;line-height:1.8;font-size:14px;"></p>

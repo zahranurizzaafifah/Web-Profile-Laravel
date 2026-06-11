@@ -26,7 +26,7 @@ class StorePortfolioRequest extends FormRequest
             'title'       => ['required', 'string', 'max:255'],
             'category'    => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
-            'image'       => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:2048'],
+            'image'       => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:4096'],
             'image_url'   => ['nullable', 'url', 'max:2048'],
             'project_url' => ['nullable', 'url', 'max:2048'],
         ];

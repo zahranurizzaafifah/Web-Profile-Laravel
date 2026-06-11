@@ -77,7 +77,7 @@
                         </td>
                     </tr>
                     @empty
-                    <tr><td colspan="3" style="text-align:center;color:#94a3b8;padding:32px;">Belum ada portfolio. <a href="{{ route('admin.portfolios.create') }}" style="color:#7c3aed;font-weight:600;">Tambah sekarang →</a></td></tr>
+                    <tr><td colspan="3" style="text-align:center;color:#94a3b8;padding:32px;">Belum ada portfolio. <a href="{{ route('admin.portfolios.create') }}" style="color:#7c3aed;font-weight:600;">Tambah sekarang -></a></td></tr>
                     @endforelse
                 </tbody>
             </table>
@@ -90,28 +90,28 @@
             <div class="card-title">Aksi Cepat</div>
             <div style="display:flex;flex-direction:column;gap:10px;">
                 <a href="{{ route('admin.portfolios.create') }}" style="display:flex;align-items:center;gap:12px;padding:14px;border-radius:10px;border:1px solid #e2e8f0;background:#fafbfc;transition:200ms;" onmouseover="this.style.borderColor='#7c3aed';this.style.background='#faf5ff'" onmouseout="this.style.borderColor='#e2e8f0';this.style.background='#fafbfc'">
-                    <span style="font-size:20px;">➕</span>
+                    <span style="font-size:20px;"></span>
                     <div>
                         <div style="font-size:14px;font-weight:700;">Tambah Portfolio</div>
                         <div style="font-size:12px;color:#94a3b8;">Unggah karya baru</div>
                     </div>
                 </a>
                 <a href="{{ route('admin.contact.edit') }}" style="display:flex;align-items:center;gap:12px;padding:14px;border-radius:10px;border:1px solid #e2e8f0;background:#fafbfc;transition:200ms;" onmouseover="this.style.borderColor='#7c3aed';this.style.background='#faf5ff'" onmouseout="this.style.borderColor='#e2e8f0';this.style.background='#fafbfc'">
-                    <span style="font-size:20px;">📬</span>
+                    <span style="font-size:20px;"></span>
                     <div>
                         <div style="font-size:14px;font-weight:700;">Edit Kontak</div>
                         <div style="font-size:12px;color:#94a3b8;">Update info kontak</div>
                     </div>
                 </a>
                 <a href="{{ route('admin.profile.edit') }}" style="display:flex;align-items:center;gap:12px;padding:14px;border-radius:10px;border:1px solid #e2e8f0;background:#fafbfc;transition:200ms;" onmouseover="this.style.borderColor='#7c3aed';this.style.background='#faf5ff'" onmouseout="this.style.borderColor='#e2e8f0';this.style.background='#fafbfc'">
-                    <span style="font-size:20px;">👤</span>
+                    <span style="font-size:20px;"></span>
                     <div>
                         <div style="font-size:14px;font-weight:700;">Edit Profil</div>
                         <div style="font-size:12px;color:#94a3b8;">Bio, skill, pendidikan</div>
                     </div>
                 </a>
                 <a href="{{ route('landing') }}" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px;border-radius:10px;border:1px solid #e2e8f0;background:#fafbfc;transition:200ms;" onmouseover="this.style.borderColor='#7c3aed';this.style.background='#faf5ff'" onmouseout="this.style.borderColor='#e2e8f0';this.style.background='#fafbfc'">
-                    <span style="font-size:20px;">🌐</span>
+                    <span style="font-size:20px;"></span>
                     <div>
                         <div style="font-size:14px;font-weight:700;">Lihat Website</div>
                         <div style="font-size:12px;color:#94a3b8;">Buka halaman publik</div>
@@ -123,11 +123,11 @@
         <!-- Info Card -->
         <div class="card" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);border:none;">
             <div style="color:#fff;">
-                <div style="font-size:24px;margin-bottom:10px;">✨</div>
+                <div style="font-size:24px;margin-bottom:10px;">Info</div>
                 <div style="font-weight:800;font-size:15px;margin-bottom:6px;">Website Aktif!</div>
                 <div style="font-size:13px;opacity:.8;line-height:1.6;">Portfolio kamu bisa dilihat oleh siapapun melalui link website.</div>
                 <a href="{{ route('landing') }}" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:8px 16px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:999px;color:#fff;font-size:13px;font-weight:700;">
-                    Buka Website ↗
+                    Buka Website-
                 </a>
             </div>
         </div>

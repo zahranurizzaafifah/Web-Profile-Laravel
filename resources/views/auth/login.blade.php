@@ -125,28 +125,28 @@
 <div class="left-panel">
     <div class="left-content">
         <div class="left-logo">
-            <div class="left-logo-mark">✦</div>
+            <div class="left-logo-mark">Z</div>
             <div class="left-logo-text">Zahra Profile</div>
         </div>
         <h1 class="left-title">Kelola <em>Portfolio</em> & Kontenmu</h1>
         <p class="left-desc">Panel admin untuk mengelola portfolio, profil, dan informasi kontak yang tampil di website pribadimu.</p>
         <div class="left-features">
             <div class="feat">
-                <div class="feat-icon">🖼️</div>
+                <div class="feat-icon">-</div>
                 <div>
                     <div class="feat-text">Manajemen Portfolio</div>
                     <div class="feat-sub">Tambah, edit, dan hapus karya dengan mudah</div>
                 </div>
             </div>
             <div class="feat">
-                <div class="feat-icon">👤</div>
+                <div class="feat-icon"></div>
                 <div>
                     <div class="feat-text">Profil Dinamis</div>
                     <div class="feat-sub">Update bio dan informasi pribadimu</div>
                 </div>
             </div>
             <div class="feat">
-                <div class="feat-icon">📬</div>
+                <div class="feat-icon"></div>
                 <div>
                     <div class="feat-text">Info Kontak</div>
                     <div class="feat-sub">Atur cara audiens menghubungimu</div>
@@ -160,7 +160,7 @@
 <div class="right-panel">
     <div class="login-box">
         <div class="login-header">
-            <h1>Selamat Datang 👋</h1>
+            <h1>Selamat Datang </h1>
             <p>Masuk untuk mengelola website profilmu</p>
         </div>
 
@@ -179,19 +179,19 @@
             </div>
             <div class="form-group">
                 <label class="form-label" for="password">Password</label>
-                <input class="form-input" type="password" id="password" name="password" placeholder="••••••••" required>
+                <input class="form-input" type="password" id="password" name="password" placeholder="********" required>
             </div>
             <div class="form-row">
                 <label class="remember">
                     <input type="checkbox" name="remember"> Ingat saya
                 </label>
             </div>
-            <button type="submit" class="btn-login">Masuk ke Dashboard →</button>
+            <button type="submit" class="btn-login">Masuk ke Dashboard -></button>
         </form>
 
         <div class="divider"><span>atau</span></div>
         <a href="{{ route('landing') }}" class="back-link">
-            ← Kembali ke Website
+            <- Kembali ke Website
         </a>
     </div>
 </div>

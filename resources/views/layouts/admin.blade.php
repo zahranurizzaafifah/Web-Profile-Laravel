@@ -36,10 +36,10 @@
         html, body { height: 100%; font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; color: var(--text); background: var(--bg); }
         a { text-decoration: none; color: inherit; }
 
-        /* ── LAYOUT ── */
+        /*  LAYOUT  */
         .admin-wrap { display: flex; min-height: 100vh; }
 
-        /* ── SIDEBAR ── */
+        /*  SIDEBAR  */
         .sidebar {
             width: var(--sidebar-w);
             background: var(--sidebar-bg);
@@ -116,10 +116,10 @@
         .sidebar-user-name { font-size: 13px; font-weight: 600; color: #fff; }
         .sidebar-user-role { font-size: 11px; color: var(--sidebar-text); margin-top: 1px; }
 
-        /* ── MAIN ── */
+        /*  MAIN  */
         .main { margin-left: var(--sidebar-w); flex: 1; display: flex; flex-direction: column; min-height: 100vh; }
 
-        /* ── TOPBAR ── */
+        /*  TOPBAR  */
         .topbar {
             background: var(--surface);
             border-bottom: 1px solid var(--border);
@@ -152,13 +152,13 @@
         .btn-danger { background: #fef2f2; color: var(--danger); border: 1px solid #fecaca; }
         .btn-danger:hover { background: var(--danger); color: #fff; }
 
-        /* ── PAGE CONTENT ── */
+        /*  PAGE CONTENT  */
         .page { padding: 32px; flex: 1; }
         .page-header { margin-bottom: 28px; }
         .page-header h1 { font-size: 1.6rem; font-weight: 800; letter-spacing: -.02em; }
         .page-header p { color: var(--muted); margin-top: 4px; font-size: 14px; }
 
-        /* ── CARDS ── */
+        /*  CARDS  */
         .card {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -187,7 +187,7 @@
         .stat-num { font-size: 1.8rem; font-weight: 800; letter-spacing: -.03em; }
         .stat-label { font-size: 13px; color: var(--muted); margin-top: 2px; }
 
-        /* ── TABLE ── */
+        /*  TABLE  */
         .table-wrap { overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; }
         th { text-align: left; padding: 12px 16px; font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; border-bottom: 2px solid var(--border); }
@@ -200,7 +200,7 @@
         .badge-green { background: #d1fae5; color: #065f46; }
         .badge-blue { background: #dbeafe; color: #1e40af; }
 
-        /* ── FORM ── */
+        /*  FORM  */
         .form-grid { display: grid; gap: 20px; }
         .form-grid-2 { grid-template-columns: 1fr 1fr; }
         .form-group { display: flex; flex-direction: column; gap: 6px; }
@@ -225,12 +225,12 @@
         .form-hint { font-size: 12px; color: var(--muted-light); }
         .form-error { font-size: 12px; color: var(--danger); }
 
-        /* ── ALERT ── */
+        /*  ALERT  */
         .alert { padding: 14px 18px; border-radius: var(--radius-sm); font-size: 14px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
         .alert-success { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
         .alert-danger { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
 
-        /* ── ACTIONS ── */
+        /*  ACTIONS  */
         .actions-row { display: flex; align-items: center; gap: 10px; }
 
         /* Mobile */

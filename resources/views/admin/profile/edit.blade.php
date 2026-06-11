@@ -5,7 +5,7 @@
 @section('page-sub', 'Kelola semua informasi profil yang tampil di website')
 
 @section('topbar-actions')
-    <a href="{{ route('about') }}" target="_blank" class="topbar-btn btn-outline">🌐 Lihat di Website</a>
+    <a href="{{ route('about') }}" target="_blank" class="topbar-btn btn-outline"> Lihat di Website</a>
 @endsection
 
 @section('content')
@@ -31,9 +31,9 @@
     </div>
     @endif
 
-    {{-- ── IDENTITAS ── --}}
+    {{--  IDENTITAS  --}}
     <div class="section-card">
-        <div class="section-card-title">👤 Identitas & Foto</div>
+        <div class="section-card-title"> Identitas & Foto</div>
         <div style="display:grid;grid-template-columns:160px 1fr;gap:24px;align-items:start;">
             {{-- Photo --}}
             <div style="text-align:center;">
@@ -41,9 +41,9 @@
                     <img id="photo-preview" src="{{ optional($profile)->photo_url }}" style="width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid #ede9fe;box-shadow:0 4px 16px rgba(124,58,237,.2);display:block;margin:0 auto 12px;">
                 </div>
                 <div id="photo-placeholder" style="{{ optional($profile)->photo_url ? 'display:none;' : '' }}width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:40px;margin:0 auto 12px;">
-                    👩‍🎨
+                    
                 </div>
-                <button type="button" onclick="document.getElementById('photo-input').click()" class="topbar-btn btn-outline" style="font-size:12px;padding:6px 14px;">📷 Ganti Foto</button>
+                <button type="button" onclick="document.getElementById('photo-input').click()" class="topbar-btn btn-outline" style="font-size:12px;padding:6px 14px;"> Ganti Foto</button>
                 <input type="file" id="photo-input" name="photo" accept="image/*" style="display:none;" onchange="previewPhoto(event)">
             </div>
             {{-- Fields --}}
@@ -70,33 +70,33 @@
         </div>
     </div>
 
-    {{-- ── SKILLS ── --}}
+    {{--  SKILLS  --}}
     <div class="section-card">
-        <div class="section-card-title">⚡ Skills</div>
+        <div class="section-card-title"> Skills</div>
         <p style="font-size:13px;color:#64748b;margin-bottom:12px;">Tulis satu skill per baris.</p>
         <textarea class="form-textarea" name="skills_raw" rows="6" placeholder="Desain Grafis&#10;Fotografi&#10;Video Editing&#10;...">{{ old('skills_raw', implode("\n", optional($profile)->skills ?? ['Desain Grafis & Produksi','Editing Video & Foto','Fotografi','Public Speaking','Microsoft 365','Kerja Tim & Komunikasi Efektif'])) }}</textarea>
     </div>
 
-    {{-- ── HOBBIES ── --}}
+    {{--  HOBBIES  --}}
     <div class="section-card">
-        <div class="section-card-title">🎯 Hobi / Minat</div>
+        <div class="section-card-title"> Hobi / Minat</div>
         <p style="font-size:13px;color:#64748b;margin-bottom:12px;">Tulis satu hobi per baris.</p>
         <textarea class="form-textarea" name="hobbies_raw" rows="4" placeholder="Desain Grafis&#10;Fotografi&#10;Videografi&#10;...">{{ old('hobbies_raw', implode("\n", optional($profile)->hobbies ?? ['Desain Grafis','Fotografi','Videografi','Editing'])) }}</textarea>
     </div>
 
-    {{-- ── PENDIDIKAN ── --}}
+    {{--  PENDIDIKAN  --}}
     <div class="section-card">
-        <div class="section-card-title">🎓 Pendidikan</div>
+        <div class="section-card-title"> Pendidikan</div>
         <div id="edu-list">
             @php
                 $education = optional($profile)->education ?? [
-                    ['title'=>'Teknologi Multimedia Broadcasting','org'=>'PENS','period'=>'2024 – Sekarang','desc'=>''],
-                    ['title'=>'Desain Komunikasi Visual','org'=>'SMK Negeri 13 Surabaya','period'=>'2021 – 2024','desc'=>''],
+                    ['title'=>'Teknologi Multimedia Broadcasting','org'=>'PENS','period'=>'2024  Sekarang','desc'=>''],
+                    ['title'=>'Desain Komunikasi Visual','org'=>'SMK Negeri 13 Surabaya','period'=>'2021  2024','desc'=>''],
                 ];
             @endphp
             @foreach($education as $i => $edu)
             <div class="repeater-row col-2" id="edu-row-{{ $i }}">
-                <button type="button" class="remove-btn" onclick="removeRow(this.parentElement)">✕</button>
+                <button type="button" class="remove-btn" onclick="removeRow(this.parentElement)">x</button>
                 <div class="form-group">
                     <label class="form-label">Jenjang / Jurusan</label>
                     <input class="form-input" name="edu_title[]" value="{{ $edu['title'] }}" placeholder="cth: Teknologi Multimedia Broadcasting">
@@ -107,7 +107,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Periode</label>
-                    <input class="form-input" name="edu_period[]" value="{{ $edu['period'] }}" placeholder="cth: 2024 – Sekarang">
+                    <input class="form-input" name="edu_period[]" value="{{ $edu['period'] }}" placeholder="cth: 2024  Sekarang">
                 </div>
                 <div class="form-group">
                     <label class="form-label">Deskripsi</label>
@@ -119,19 +119,19 @@
         <button type="button" class="add-row-btn" onclick="addRow('edu-list', eduTemplate())">+ Tambah Pendidikan</button>
     </div>
 
-    {{-- ── PENGALAMAN KERJA ── --}}
+    {{--  PENGALAMAN KERJA  --}}
     <div class="section-card">
-        <div class="section-card-title">💼 Pengalaman Kerja</div>
+        <div class="section-card-title"> Pengalaman Kerja</div>
         <div id="exp-list">
             @php
                 $experience = optional($profile)->experience ?? [
-                    ['title'=>'Vector Designer','org'=>'Biro Reklame Surabaya','period'=>'Feb 2022 – April 2026','desc'=>'Merancang logo, desain stempel, dan aset grafis menggunakan CorelDRAW'],
-                    ['title'=>'PKL – Fotografer','org'=>'Studio Photo Silver','period'=>'2022 – 2023','desc'=>'Teknik pengambilan foto dan editing gambar'],
+                    ['title'=>'Vector Designer','org'=>'Biro Reklame Surabaya','period'=>'Feb 2022  April 2026','desc'=>'Merancang logo, desain stempel, dan aset grafis menggunakan CorelDRAW'],
+                    ['title'=>'PKL  Fotografer','org'=>'Studio Photo Silver','period'=>'2022  2023','desc'=>'Teknik pengambilan foto dan editing gambar'],
                 ];
             @endphp
             @foreach($experience as $i => $exp)
             <div class="repeater-row col-2">
-                <button type="button" class="remove-btn" onclick="removeRow(this.parentElement)">✕</button>
+                <button type="button" class="remove-btn" onclick="removeRow(this.parentElement)">x</button>
                 <div class="form-group">
                     <label class="form-label">Posisi / Jabatan</label>
                     <input class="form-input" name="exp_title[]" value="{{ $exp['title'] }}" placeholder="cth: Vector Designer">
@@ -142,7 +142,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Periode</label>
-                    <input class="form-input" name="exp_period[]" value="{{ $exp['period'] }}" placeholder="cth: 2022 – 2023">
+                    <input class="form-input" name="exp_period[]" value="{{ $exp['period'] }}" placeholder="cth: 2022  2023">
                 </div>
                 <div class="form-group">
                     <label class="form-label">Deskripsi</label>
@@ -154,23 +154,23 @@
         <button type="button" class="add-row-btn" onclick="addRow('exp-list', expTemplate())">+ Tambah Pengalaman</button>
     </div>
 
-    {{-- ── ORGANISASI ── --}}
+    {{--  ORGANISASI  --}}
     <div class="section-card">
-        <div class="section-card-title">🏆 Organisasi & Kegiatan</div>
+        <div class="section-card-title"> Organisasi & Kegiatan</div>
         <div id="org-list">
             @php
                 $organizations = optional($profile)->organizations ?? [
-                    ['title'=>'Divisi Acara – Project Multimedia','year'=>'2024','icon'=>'🎪','desc'=>'Perencanaan dan pelaksanaan konsep acara multimedia'],
-                    ['title'=>'Tim Kreatif – MMBFEST','year'=>'2026','icon'=>'🎨','desc'=>'Mengembangkan ide kreatif untuk konsep acara visual'],
-                    ['title'=>'Lab Tour – DTMK Expo 2026','year'=>'2026','icon'=>'🔬','desc'=>'Pemandu kegiatan lab tour'],
+                    ['title'=>'Divisi Acara  Project Multimedia','year'=>'2024','icon'=>'','desc'=>'Perencanaan dan pelaksanaan konsep acara multimedia'],
+                    ['title'=>'Tim Kreatif  MMBFEST','year'=>'2026','icon'=>'','desc'=>'Mengembangkan ide kreatif untuk konsep acara visual'],
+                    ['title'=>'Lab Tour  DTMK Expo 2026','year'=>'2026','icon'=>'','desc'=>'Pemandu kegiatan lab tour'],
                 ];
             @endphp
             @foreach($organizations as $i => $org)
             <div class="repeater-row" style="grid-template-columns:60px 1fr 1fr 100px;gap:12px;">
-                <button type="button" class="remove-btn" onclick="removeRow(this.parentElement)">✕</button>
+                <button type="button" class="remove-btn" onclick="removeRow(this.parentElement)">x</button>
                 <div class="form-group">
                     <label class="form-label">Icon</label>
-                    <input class="form-input" name="org_icon[]" value="{{ $org['icon'] }}" placeholder="🏆" style="text-align:center;font-size:20px;">
+                    <input class="form-input" name="org_icon[]" value="{{ $org['icon'] }}" placeholder="********" style="text-align:center;font-size:20px;">
                 </div>
                 <div class="form-group" style="grid-column:span 2;">
                     <label class="form-label">Nama Kegiatan</label>
@@ -192,8 +192,8 @@
 
     {{-- SUBMIT --}}
     <div style="display:flex;gap:12px;padding-bottom:20px;">
-        <button type="submit" class="topbar-btn btn-primary" style="padding:13px 32px;font-size:15px;">💾 Simpan Semua Perubahan</button>
-        <a href="{{ route('about') }}" target="_blank" class="topbar-btn btn-outline" style="padding:13px 22px;font-size:15px;">👁️ Preview</a>
+        <button type="submit" class="topbar-btn btn-primary" style="padding:13px 32px;font-size:15px;"> Simpan Semua Perubahan</button>
+        <a href="{{ route('about') }}" target="_blank" class="topbar-btn btn-outline" style="padding:13px 22px;font-size:15px;"> Preview</a>
     </div>
 </form>
 
@@ -215,26 +215,26 @@ function addRow(listId, html) {
 }
 function eduTemplate() {
     return `<div class="repeater-row col-2">
-        <button type="button" class="remove-btn" onclick="removeRow(this.parentElement)">✕</button>
+        <button type="button" class="remove-btn" onclick="removeRow(this.parentElement)">x</button>
         <div class="form-group"><label class="form-label">Jenjang / Jurusan</label><input class="form-input" name="edu_title[]" placeholder="cth: Teknologi Multimedia Broadcasting"></div>
         <div class="form-group"><label class="form-label">Institusi</label><input class="form-input" name="edu_org[]" placeholder="cth: PENS"></div>
-        <div class="form-group"><label class="form-label">Periode</label><input class="form-input" name="edu_period[]" placeholder="cth: 2024 – Sekarang"></div>
+        <div class="form-group"><label class="form-label">Periode</label><input class="form-input" name="edu_period[]" placeholder="cth: 2024  Sekarang"></div>
         <div class="form-group"><label class="form-label">Deskripsi</label><input class="form-input" name="edu_desc[]" placeholder="Opsional..."></div>
     </div>`;
 }
 function expTemplate() {
     return `<div class="repeater-row col-2">
-        <button type="button" class="remove-btn" onclick="removeRow(this.parentElement)">✕</button>
+        <button type="button" class="remove-btn" onclick="removeRow(this.parentElement)">x</button>
         <div class="form-group"><label class="form-label">Posisi / Jabatan</label><input class="form-input" name="exp_title[]" placeholder="cth: Vector Designer"></div>
         <div class="form-group"><label class="form-label">Perusahaan / Tempat</label><input class="form-input" name="exp_org[]" placeholder="cth: Biro Reklame Surabaya"></div>
-        <div class="form-group"><label class="form-label">Periode</label><input class="form-input" name="exp_period[]" placeholder="cth: 2022 – 2023"></div>
+        <div class="form-group"><label class="form-label">Periode</label><input class="form-input" name="exp_period[]" placeholder="cth: 2022  2023"></div>
         <div class="form-group"><label class="form-label">Deskripsi</label><input class="form-input" name="exp_desc[]" placeholder="Opsional..."></div>
     </div>`;
 }
 function orgTemplate() {
     return `<div class="repeater-row" style="grid-template-columns:60px 1fr 1fr 100px;gap:12px;">
-        <button type="button" class="remove-btn" onclick="removeRow(this.parentElement)">✕</button>
-        <div class="form-group"><label class="form-label">Icon</label><input class="form-input" name="org_icon[]" placeholder="🏆" style="text-align:center;font-size:20px;"></div>
+        <button type="button" class="remove-btn" onclick="removeRow(this.parentElement)">x</button>
+        <div class="form-group"><label class="form-label">Icon</label><input class="form-input" name="org_icon[]" placeholder="********" style="text-align:center;font-size:20px;"></div>
         <div class="form-group" style="grid-column:span 2;"><label class="form-label">Nama Kegiatan</label><input class="form-input" name="org_title[]" placeholder="cth: Divisi Acara MMBFEST"></div>
         <div class="form-group"><label class="form-label">Tahun</label><input class="form-input" name="org_year[]" placeholder="2024"></div>
         <div class="form-group" style="grid-column:1/-1;"><label class="form-label">Deskripsi</label><input class="form-input" name="org_desc[]" placeholder="Opsional..."></div>

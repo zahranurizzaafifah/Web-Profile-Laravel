@@ -16,6 +16,17 @@
 </div>
 
 <div class="wrap" style="padding-top:56px;padding-bottom:80px;">
+    @if(session('contact_success'))
+        <div style="margin-bottom:24px;padding:14px 18px;border-radius:12px;background:#ecfdf5;border:1px solid #bbf7d0;color:#047857;font-size:14px;font-weight:700;">
+            {{ session('contact_success') }}
+        </div>
+    @endif
+
+    @if(session('contact_error'))
+        <div style="margin-bottom:24px;padding:14px 18px;border-radius:12px;background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;font-size:14px;font-weight:700;">
+            {{ session('contact_error') }}
+        </div>
+    @endif
     <div class="contact-grid">
         <!-- LEFT: Contact Info -->
         <div>
@@ -60,7 +71,6 @@
 
             @if(!optional($contact)->email)
             <div style="text-align:center;padding:48px 20px;border:2px dashed #e2e8f0;border-radius:16px;color:#94a3b8;">
-                <div style="font-size:32px;margin-bottom:8px;">📬</div>
                 <div style="font-size:14px;font-weight:600;">Info kontak belum diatur</div>
                 <div style="font-size:13px;margin-top:4px;">Admin dapat mengaturnya di panel admin</div>
             </div>
@@ -70,25 +80,36 @@
         <!-- RIGHT: Visual + CTA -->
         <div style="display:flex;flex-direction:column;gap:20px;">
             <div class="card" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);border:none;padding:36px;">
-                <div style="font-size:36px;margin-bottom:16px;">✨</div>
                 <h3 style="font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:10px;line-height:1.3;">Siap untuk berkolaborasi?</h3>
                 <p style="color:rgba(255,255,255,.75);font-size:14px;line-height:1.8;margin-bottom:24px;">Saya terbuka untuk proyek desain grafis, fotografi, editing video, dan proyek multimedia lainnya.</p>
-                @if(optional($contact)->email)
-                <a href="mailto:{{ $contact->email }}" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:#fff;border-radius:999px;color:#7c3aed;font-size:14px;font-weight:800;transition:200ms;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-                    📧 Kirim Email
-                </a>
-                @endif
-            </div>
+                <form method="POST" action="{{ route('contact.send') }}" style="display:flex;flex-direction:column;gap:12px;">
+                    @csrf
+                    <input name="name" type="text" value="{{ old('name') }}" placeholder="Nama kamu" required style="width:100%;padding:12px 14px;border:0;border-radius:12px;background:rgba(255,255,255,.96);font-family:inherit;font-size:14px;outline:none;">
+                    @error('name') <div style="color:#fff;font-size:12px;font-weight:700;">{{ $message }}</div> @enderror
 
+                    <input name="email" type="email" value="{{ old('email') }}" placeholder="Email kamu" required style="width:100%;padding:12px 14px;border:0;border-radius:12px;background:rgba(255,255,255,.96);font-family:inherit;font-size:14px;outline:none;">
+                    @error('email') <div style="color:#fff;font-size:12px;font-weight:700;">{{ $message }}</div> @enderror
+
+                    <input name="subject" type="text" value="{{ old('subject') }}" placeholder="Subjek (opsional)" style="width:100%;padding:12px 14px;border:0;border-radius:12px;background:rgba(255,255,255,.96);font-family:inherit;font-size:14px;outline:none;">
+                    @error('subject') <div style="color:#fff;font-size:12px;font-weight:700;">{{ $message }}</div> @enderror
+
+                    <textarea name="message" rows="5" placeholder="Tulis pesan..." required style="width:100%;padding:12px 14px;border:0;border-radius:12px;background:rgba(255,255,255,.96);font-family:inherit;font-size:14px;line-height:1.6;resize:vertical;outline:none;">{{ old('message') }}</textarea>
+                    @error('message') <div style="color:#fff;font-size:12px;font-weight:700;">{{ $message }}</div> @enderror
+
+                    <button type="submit" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;background:#fff;border:0;border-radius:999px;color:#7c3aed;font-size:14px;font-weight:800;cursor:pointer;transition:200ms;font-family:inherit;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+                        Kirim Pesan
+                    </button>
+                </form>
+            </div>
             <div class="card">
-                <div class="card-title">🕐 Waktu Respons</div>
-                <p style="color:#64748b;font-size:14px;line-height:1.7;">Biasanya saya membalas dalam <strong style="color:#1e293b;">1–2 hari kerja</strong>. Untuk keperluan mendesak, hubungi via WhatsApp.</p>
+                <div class="card-title">Waktu Respons</div>
+                <p style="color:#64748b;font-size:14px;line-height:1.7;">Biasanya saya membalas dalam <strong style="color:#1e293b;">1-2 hari kerja</strong>. Untuk keperluan mendesak, hubungi via WhatsApp.</p>
                 <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
                     <div style="padding:10px 14px;background:#f8fafc;border-radius:10px;border:1px solid #e2e8f0;font-size:13px;font-weight:600;color:#475569;">
-                        📅 Sen–Jum
+                        Sen-Jum
                     </div>
                     <div style="padding:10px 14px;background:#f8fafc;border-radius:10px;border:1px solid #e2e8f0;font-size:13px;font-weight:600;color:#475569;">
-                        🕘 09.00–17.00 WIB
+                        09.00-17.00 WIB
                     </div>
                 </div>
             </div>

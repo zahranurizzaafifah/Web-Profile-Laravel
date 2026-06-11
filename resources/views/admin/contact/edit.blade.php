@@ -5,7 +5,7 @@
 @section('page-sub', 'Kelola detail kontak yang ditampilkan di website')
 
 @section('topbar-actions')
-    <a href="{{ route('contact') }}" target="_blank" class="topbar-btn btn-outline">🌐 Lihat di Website</a>
+    <a href="{{ route('contact') }}" target="_blank" class="topbar-btn btn-outline"> Lihat di Website</a>
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@
         @csrf @method('PUT')
 
         <div class="card" style="margin-bottom:20px;">
-            <div class="card-title">📬 Detail Kontak</div>
+            <div class="card-title"> Detail Kontak</div>
             <div class="form-grid" style="gap:18px;">
                 <div class="form-group">
                     <label class="form-label">Email</label>
@@ -41,7 +41,7 @@
         </div>
 
         <div style="display:flex;gap:12px;">
-            <button type="submit" class="topbar-btn btn-primary" style="padding:12px 28px;font-size:14px;">💾 Simpan Kontak</button>
+            <button type="submit" class="topbar-btn btn-primary" style="padding:12px 28px;font-size:14px;"> Simpan Kontak</button>
             <a href="{{ route('admin.portfolios.index') }}" class="topbar-btn btn-outline" style="padding:12px 22px;font-size:14px;">Batal</a>
         </div>
     </form>

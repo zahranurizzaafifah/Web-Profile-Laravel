@@ -9,11 +9,18 @@ class Profile extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'name', 'program', 'class_name', 'bio', 'hobbies', 'skills'];
+    protected $fillable = [
+        'user_id', 'name', 'program', 'class_name',
+        'bio', 'hobbies', 'skills',
+        'education', 'experience', 'organizations', 'photo_url',
+    ];
 
     protected $casts = [
-        'hobbies' => 'array',
-        'skills' => 'array',
+        'hobbies'       => 'array',
+        'skills'        => 'array',
+        'education'     => 'array',
+        'experience'    => 'array',
+        'organizations' => 'array',
     ];
 
     public function user()

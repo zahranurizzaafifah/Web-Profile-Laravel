@@ -1,60 +1,49 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
-@section('title', 'Admin Contact')
+@section('title', 'Kontak - Admin Zahra')
+@section('page-title', 'Info Kontak')
+@section('page-sub', 'Kelola detail kontak yang ditampilkan di website')
+
+@section('topbar-actions')
+    <a href="{{ route('contact') }}" target="_blank" class="topbar-btn btn-outline">🌐 Lihat di Website</a>
+@endsection
 
 @section('content')
-    <section class="section">
-        <h2>Admin Contact</h2>
-        <p class="muted">Kelola detail contact utama yang ditampilkan di halaman publik.</p>
+<div style="max-width:640px;">
+    @if($errors->any())
+        <div class="alert alert-danger">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div>@foreach($errors->all() as $e)<div>{{ $e }}</div>@endforeach</div>
+        </div>
+    @endif
 
-        @if(session('success'))
-            <div class="card" style="margin:18px 0; border-color: rgba(124,247,212,.35);">
-                {{ session('success') }}
-            </div>
-        @endif
+    <form method="POST" action="{{ route('admin.contact.update') }}">
+        @csrf @method('PUT')
 
-        @if ($errors->any())
-            <div class="card" style="border-color: rgba(255,123,213,.45); margin:18px 0;">
-                <strong>Periksa input:</strong>
-                <ul class="clean" style="margin: 10px 0 0;">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+        <div class="card" style="margin-bottom:20px;">
+            <div class="card-title">📬 Detail Kontak</div>
+            <div class="form-grid" style="gap:18px;">
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input class="form-input" name="email" type="email" placeholder="email@example.com" value="{{ old('email', $contact->email ?? '') }}">
+                </div>
+                <div class="form-grid form-grid-2" style="gap:16px;">
+                    <div class="form-group">
+                        <label class="form-label">Instagram</label>
+                        <input class="form-input" name="instagram" type="text" placeholder="@username" value="{{ old('instagram', $contact->instagram ?? '') }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">GitHub</label>
+                        <input class="form-input" name="github" type="text" placeholder="github.com/username" value="{{ old('github', $contact->github ?? '') }}">
+                    </div>
+                </div>
             </div>
-        @endif
+        </div>
 
-        <form method="POST" action="{{ route('admin.contact.update') }}" class="card" style="display:grid; gap:14px;">
-            @csrf
-            @method('PUT')
-            <div class="grid-2">
-                <div>
-                    <label class="muted">Email</label>
-                    <input name="email" value="{{ old('email', $contact->email ?? '') }}" style="width:100%; margin-top:6px; padding:14px 16px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.05); color: var(--text);">
-                </div>
-                <div>
-                    <label class="muted">Phone</label>
-                    <input name="phone" value="{{ old('phone', $contact->phone ?? '') }}" style="width:100%; margin-top:6px; padding:14px 16px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.05); color: var(--text);">
-                </div>
-            </div>
-            <div class="grid-2">
-                <div>
-                    <label class="muted">Instagram</label>
-                    <input name="instagram" value="{{ old('instagram', $contact->instagram ?? '') }}" style="width:100%; margin-top:6px; padding:14px 16px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.05); color: var(--text);">
-                </div>
-                <div>
-                    <label class="muted">GitHub</label>
-                    <input name="github" value="{{ old('github', $contact->github ?? '') }}" style="width:100%; margin-top:6px; padding:14px 16px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.05); color: var(--text);">
-                </div>
-            </div>
-            <div>
-                <label class="muted">Location</label>
-                <input name="location" value="{{ old('location', $contact->location ?? '') }}" style="width:100%; margin-top:6px; padding:14px 16px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.05); color: var(--text);">
-            </div>
-            <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                <button class="btn btn-primary" type="submit">Simpan</button>
-                <a class="btn btn-soft" href="{{ route('admin.portfolios.index') }}">Ke Portfolio Admin</a>
-            </div>
-        </form>
-    </section>
+        <div style="display:flex;gap:12px;">
+            <button type="submit" class="topbar-btn btn-primary" style="padding:12px 28px;font-size:14px;">💾 Simpan Kontak</button>
+            <a href="{{ route('admin.portfolios.index') }}" class="topbar-btn btn-outline" style="padding:12px 22px;font-size:14px;">Batal</a>
+        </div>
+    </form>
+</div>
 @endsection

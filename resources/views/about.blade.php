@@ -1,76 +1,166 @@
 @extends('layouts.app')
 
-@section('title', 'Tentang Zahra')
+@section('title', 'Tentang - ' . ($profile->name ?? 'Zahra Nurizza Afifah'))
 
 @section('content')
-    <section class="section">
-        <h2>Tentang Diri</h2>
-        <p class="lead" style="margin-top:0;">{{ optional($profile)->bio }}</p>
-        <div class="grid-2" style="margin-top:18px;">
-            <div class="card">
-                <div class="tag">Identitas</div>
-                <p><strong>Nama:</strong> {{ optional($profile)->name }}</p>
-                <p><strong>Program:</strong> {{ optional($profile)->program }}</p>
-                <p><strong>Kelas:</strong> {{ optional($profile)->class_name }}</p>
-            </div>
-            <div class="card">
-                <div class="tag">Minat</div>
-                <ul class="clean">
-                    @foreach((optional($profile)->hobbies ?? []) as $item)
-                        <li>{{ $item }}</li>
+
+<!-- PAGE HEADER -->
+<div style="background:linear-gradient(135deg,#faf5ff,#f0f9ff);padding:60px 0 48px;border-bottom:1px solid #e2e8f0;">
+    <div class="wrap">
+        <div class="section-label">Profil</div>
+        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.02em;margin-bottom:10px;">
+            Tentang Saya
+        </h1>
+        <p style="color:#64748b;font-size:15px;">Kenali lebih dekat tentang perjalanan, pendidikan, dan pengalaman saya.</p>
+    </div>
+</div>
+
+<div class="wrap" style="padding-top:48px;padding-bottom:72px;">
+    <div style="display:grid;grid-template-columns:300px 1fr;gap:40px;align-items:start;">
+
+        <!-- LEFT: Profile Card -->
+        <div style="position:sticky;top:88px;">
+            <div class="card" style="text-align:center;padding:32px 24px;">
+                @if($profile->photo_url)
+                    <img src="{{ $profile->photo_url }}" alt="{{ $profile->name }}"
+                         style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid #ede9fe;box-shadow:0 4px 20px rgba(124,58,237,.25);margin:0 auto 20px;display:block;">
+                @else
+                    <div style="width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg,#7c3aed,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 20px;box-shadow:0 8px 24px rgba(124,58,237,.3);">
+                        👩‍🎨
+                    </div>
+                @endif
+                <h2 style="font-size:1.1rem;font-weight:800;margin-bottom:4px;">{{ $profile->name }}</h2>
+                <p style="font-size:13px;color:#7c3aed;font-weight:600;margin-bottom:16px;">Creative Designer & Multimedia</p>
+                <div style="background:#f8fafc;border-radius:12px;padding:16px;text-align:left;margin-bottom:16px;">
+                    <div style="display:flex;flex-direction:column;gap:10px;">
+                        <div>
+                            <div style="font-size:11px;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:.06em;">Program Studi</div>
+                            <div style="font-size:13px;font-weight:600;margin-top:2px;">{{ $profile->program }}</div>
+                        </div>
+                        <div>
+                            <div style="font-size:11px;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:.06em;">Kelas</div>
+                            <div style="font-size:13px;font-weight:600;margin-top:2px;">{{ $profile->class_name }}</div>
+                        </div>
+                    </div>
+                </div>
+                @if(!empty($profile->skills))
+                <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;">
+                    @foreach(array_slice($profile->skills, 0, 6) as $s)
+                        <span style="padding:4px 10px;border-radius:999px;background:#ede9fe;color:#7c3aed;font-size:11px;font-weight:700;">{{ $s }}</span>
                     @endforeach
-                </ul>
+                </div>
+                @endif
             </div>
+
+            @if(!empty($profile->hobbies))
+            <div class="card" style="margin-top:16px;">
+                <div class="card-title">🎯 Hobi & Minat</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                    @php $hobbyIcons = ['🎨','📷','🎬','✂️','🖌️','🎵','📝','🎮']; @endphp
+                    @foreach($profile->hobbies as $i => $h)
+                    <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;">
+                        <span style="font-size:16px;">{{ $hobbyIcons[$i % count($hobbyIcons)] }}</span>
+                        <span style="font-size:12px;font-weight:600;">{{ $h }}</span>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            @endif
         </div>
 
-        <h2 style="margin-top: 40px;">Pendidikan</h2>
-        <div class="card" style="margin-top: 18px;">
-            <h3 style="margin: 0; font-size: 1.1rem;">Program Studi Multimedia Broadcasting</h3>
-            <p class="muted" style="margin: 5px 0 10px;">Politeknik Elektronika Negeri Surabaya (2024 - Sekarang)</p>
-            <p style="margin: 0;">Panitia personal branding di dunia kreatif dan berkarya menggunakan software berperan aktif dalam pengembangan koordinasi acara komunitas.</p>
-            
-            <hr style="border: 0; border-top: 1px solid #ddd; margin: 15px 0;">
-            
-            <h3 style="margin: 0; font-size: 1.1rem;">Desain Komunikasi Visual</h3>
-            <p class="muted" style="margin: 5px 0 10px;">SMK Negeri 13 Surabaya (2021 - 2024)</p>
-            <p style="margin: 0;">Competency assessment test membuat alat promosi untuk festival wisata daerah berupa karya sketsa desain, poster 3D brosur paket wisata.</p>
+        <!-- RIGHT: Content -->
+        <div>
+            <!-- Bio -->
+            @if($profile->bio)
+            <div class="card" style="margin-bottom:24px;">
+                <div class="card-title">👋 Bio Singkat</div>
+                <p style="color:#475569;line-height:1.85;font-size:15px;">{{ $profile->bio }}</p>
+            </div>
+            @endif
+
+            <!-- Skills -->
+            @if(!empty($profile->skills))
+            <div class="card" style="margin-bottom:24px;">
+                <div class="card-title">⚡ Kemampuan & Skill</div>
+                @php
+                    $skillPcts = [90, 85, 80, 85, 85, 75, 80, 70];
+                @endphp
+                @foreach($profile->skills as $i => $skill)
+                <div style="margin-bottom:16px;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:14px;font-weight:600;">
+                        <span>{{ $skill }}</span>
+                        <span style="color:#7c3aed;font-weight:700;">{{ $skillPcts[$i % count($skillPcts)] }}%</span>
+                    </div>
+                    <div style="height:8px;background:#e2e8f0;border-radius:999px;overflow:hidden;">
+                        <div style="height:100%;border-radius:999px;background:linear-gradient(90deg,#7c3aed,#a78bfa);width:{{ $skillPcts[$i % count($skillPcts)] }}%;transition:width 1s ease;"></div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            @endif
+
+            <!-- Pendidikan -->
+            @if(!empty($profile->education))
+            <div class="card" style="margin-bottom:24px;">
+                <div class="card-title">🎓 Pendidikan</div>
+                <div class="timeline">
+                    @foreach($profile->education as $i => $edu)
+                    <div class="tl-item">
+                        <div class="tl-dot" style="{{ $i > 0 ? 'background:#a78bfa;box-shadow:0 0 0 2px #a78bfa;' : '' }}"></div>
+                        @if(!empty($edu['period']))<div class="tl-date">{{ $edu['period'] }}</div>@endif
+                        <div class="tl-title">{{ $edu['title'] }}</div>
+                        @if(!empty($edu['org']))<div class="tl-org">{{ $edu['org'] }}</div>@endif
+                        @if(!empty($edu['desc']))<div class="tl-desc">{{ $edu['desc'] }}</div>@endif
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            @endif
+
+            <!-- Pengalaman -->
+            @if(!empty($profile->experience))
+            <div class="card" style="margin-bottom:24px;">
+                <div class="card-title">💼 Pengalaman Kerja</div>
+                <div class="timeline">
+                    @foreach($profile->experience as $i => $exp)
+                    <div class="tl-item">
+                        <div class="tl-dot" style="{{ $i > 0 ? 'background:#a78bfa;box-shadow:0 0 0 2px #a78bfa;' : '' }}"></div>
+                        @if(!empty($exp['period']))<div class="tl-date">{{ $exp['period'] }}</div>@endif
+                        <div class="tl-title">{{ $exp['title'] }}</div>
+                        @if(!empty($exp['org']))<div class="tl-org">{{ $exp['org'] }}</div>@endif
+                        @if(!empty($exp['desc']))<div class="tl-desc">{{ $exp['desc'] }}</div>@endif
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            @endif
+
+            <!-- Organisasi -->
+            @if(!empty($profile->organizations))
+            <div class="card">
+                <div class="card-title">🏆 Organisasi & Kegiatan</div>
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                    @foreach($profile->organizations as $org)
+                    <div style="display:flex;gap:14px;padding:14px;background:#f8fafc;border-radius:12px;border:1px solid #e2e8f0;">
+                        <span style="font-size:22px;flex-shrink:0;margin-top:2px;">{{ $org['icon'] ?? '🏆' }}</span>
+                        <div>
+                            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
+                                <span style="font-size:14px;font-weight:700;">{{ $org['title'] }}</span>
+                                @if(!empty($org['year']))
+                                <span style="padding:2px 8px;border-radius:999px;background:#ede9fe;color:#7c3aed;font-size:11px;font-weight:700;">{{ $org['year'] }}</span>
+                                @endif
+                            </div>
+                            @if(!empty($org['desc']))
+                            <p style="font-size:13px;color:#64748b;line-height:1.6;margin:0;">{{ $org['desc'] }}</p>
+                            @endif
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            @endif
         </div>
+    </div>
+</div>
 
-        <h2 style="margin-top: 40px;">Pengalaman</h2>
-        <div class="card" style="margin-top: 18px;">
-            <h3 style="margin: 0; font-size: 1.1rem;">Vector Designer (Biro Reklame Surabaya)</h3>
-            <p class="muted" style="margin: 5px 0 10px;">Surabaya, Jawa Timur, Indonesia (Feb 2022 - April 2026)</p>
-            <ul style="margin: 0; padding-left: 20px;">
-                <li>Merancang dan membuat konsep logo, desain stempel, dan aset grafis dasar lainnya menggunakan CorelDRAW untuk berbagai kebutuhan klien dan internal.</li>
-                <li>Berkolaborasi dengan anggota tim untuk memastikan output desain sesuai dengan spesifikasi yang diminta dan persyaratan fungsional.</li>
-                <li>Desain yang disesuaikan dan disempurnakan berdasarkan umpan balik klien untuk meningkatkan kejelasan, dampak visual, dan kegunaan.</li>
-                <li>Memanfaatkan alat CorelDRAW untuk menyiapkan file siap cetak, memastikan tata letak, ukuran, dan konsistensi warna yang akurat.</li>
-                <li>Mendukung produksi dengan mengatur aset desain dan mengoptimalkan alur kerja untuk waktu penyelesaian yang lebih cepat.</li>
-            </ul>
-
-            <hr style="border: 0; border-top: 1px solid #ddd; margin: 15px 0;">
-
-            <h3 style="margin: 0; font-size: 1.1rem;">PKL Di Bidang Photographer (Studio Photo Silver)</h3>
-            <p class="muted" style="margin: 5px 0 10px;">Surabaya (2022 - 2023)</p>
-            <p style="margin: 0;">Selama PKL, saya belajar cara mengatur pencahayaan, mengambil foto, dan mengedit gambar dengan perangkat lunak khusus. Saya juga belajar tentang komposisi foto dan menghasilkan yang mereka inginkan.</p>
-        </div>
-
-        <h2 style="margin-top: 40px;">Organisasi & Kegiatan</h2>
-        <div class="card" style="margin-top: 18px;">
-            <ul class="clean" style="gap: 15px; display: flex; flex-direction: column;">
-                <li>
-                    <strong>Divisi Acara – Project Multimedia (Kelas)</strong> <span class="muted">(2024)</span>
-                    <div style="color: #ffffff; margin-top: 5px; line-height: 1.6;">Berperan dalam perencanaan dan pelaksanaan konsep acara multimedia, mengatur alur kegiatan agar berjalan sesuai rundown, dan bekerja sama dalam tim untuk memastikan acara berjalan lancar.</div>
-                </li>
-                <li>
-                    <strong>Tim Kreatif – MMBFEST (Multimedia Festival)</strong> <span class="muted">(2026)</span>
-                    <div style="color: #ffffff; margin-top: 5px; line-height: 1.6;">Mengembangkan ide kreatif untuk konsep acara dan visual, berkontribusi dalam pembuatan desain dan konten promosi, serta bekerja sama dalam tim untuk menghasilkan konsep acara yang menarik.</div>
-                </li>
-                <li>
-                    <strong>Lab Tour – DTMK Expo 2026</strong> <span class="muted">(2026)</span>
-                    <div style="color: #ffffff; margin-top: 5px; line-height: 1.6;">Bertugas sebagai pemandu dalam kegiatan lab tour, menjelaskan fasilitas dan kegiatan di laboratorium kepada pengunjung, dan membantu membangun komunikasi yang baik dengan peserta acara.</div>
-                </li>
-            </ul>
-        </div>
-    </section>
 @endsection
